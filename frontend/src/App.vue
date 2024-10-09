@@ -37,9 +37,10 @@ export default {
 </script>
 
 <style scoped>
-.about-section, .contact-section {
-  padding: 100px 20px;
-  min-height: 100vh; 
+/* Add padding to offset the height of the fixed navbar */
+.about-section, .contact-section, #projects {
+  padding-top: 100px; /* Adjust this value based on your navbar height */
+  min-height: 100vh; /* Ensure each section takes up full viewport height */
 }
 
 .about-section {
@@ -51,6 +52,6 @@ export default {
 }
 
 html {
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth; /* Enables smooth scrolling */
 }
 </style>
