@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import 'aos/dist/aos.css'; // Import AOS styles
-import AOS from 'aos'; // Import AOS library
+import 'aos/dist/aos.css';
+import AOS from 'aos'; 
 
 export default {
   data() {
@@ -46,16 +46,15 @@ export default {
           description: 'A brief description of this project.',
           image: '/path/to/image2.jpg',
         },
-        // Add more projects as needed
+     
       ],
     };
   },
   mounted() {
-    AOS.init(); // Initialize AOS animations
+    AOS.init(); 
   },
   methods: {
     viewProject(id) {
-      // Navigate to the project details or open a modal
       console.log(`Navigating to project ${id}`);
     },
   },
