@@ -5,11 +5,12 @@
       <div class="shape shape-2"></div>
       <div class="shape shape-3"></div>
       <div class="shape shape-4"></div>
+      <div class="hexagon"></div>
     </div>
     <div class="header-content">
       <h1>Welcome to Kenza's Portfolio</h1>
       <p>Discover my projects, creativity, and the passion behind my work.</p>
-      <a href="#projects" class="animated-button">Explore My Work</a> <!-- Animated Button -->
+      <a href="#projects" class="explore-button">Explore My Work</a>
     </div>
   </header>
 </template>
@@ -29,113 +30,119 @@ export default {
 </script>
 
 <style scoped>
-/* Updated Header Section with Minimalist Palette */
+/* Prevent horizontal scroll */
+body, html {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Section */
 .header-section {
   height: 75vh;
-  background-image: url('../assets/images/bg-header.jpg');
+  background: url('../assets/images/bg-header.jpg') no-repeat center center;
   background-size: cover;
-  background-position: center;
   margin-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: 120px;
+  padding: 0 20px; /* Added padding to avoid overflow */
   color: #fafafa;
   position: relative;
+  width: 100%;
+  max-width: 100vw; /* Ensures no overflow */
   overflow: hidden;
 }
 
-/* Geometric Shapes Styling */
+/* Shapes Styling */
 .header-shapes .shape {
   position: absolute;
-  opacity: 0.3;
-  animation: animateShapes 8s infinite alternate;
-}
-
-/* First Shape (Triangle) */
-.shape-1 {
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 100px solid #607d8b; /* Slate Gray */
-  top: 30%;
-  right: 5%;
-}
-
-/* Second Shape (Hexagon) */
-.shape-2 {
-  width: 100px;
-  height: 100px;
-  background-color: #ffd600; /* Accent Yellow */
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  top: 50%;
-  right: 20%;
-}
-
-/* Third Shape (Diamond) */
-.shape-3 {
-  width: 120px;
-  height: 120px;
-  background-color: #1a237e; /* Navy Blue */
-  transform: rotate(45deg);
-  top: 70%;
-  right: 10%;
   opacity: 0.2;
 }
 
-/* Fourth Shape (Square) */
-.shape-4 {
+/* Individual Shape Styles */
+.shape-1 {
   width: 100px;
   height: 100px;
-  background-color: #eceff1; /* Cool Gray */
+  background-color: #607d8b;
+  top: 20%;
+  left: 50%;
+  border-radius: 50%;
+}
+
+.shape-2 {
+  width: 150px;
+  height: 150px;
+  background-color: #ffd600;
   bottom: 15%;
+  right: 10%; /* Adjusted to ensure no overflow */
+  border-radius: 50%;
+}
+
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  background-color: #1a237e;
+  top: 70%;
+  left: 40%;
   right: 5%;
-  opacity: 0.4;
+  transform: rotate(45deg);
 }
 
-/* Animations */
-@keyframes animateShapes {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(15px);
-  }
+.shape-4 {
+  width: 70px;
+  height: 70px;
+  background-color: #f5f5dc;
+  bottom: 30%;
+  left: 40%; /* Adjusted to ensure no overflow */
+  border-radius: 50%;
 }
 
-/* Text Styling */
+/* Hexagon Style */
+.hexagon {
+  width: 100px;
+  height: 100px;
+  background-color: #9e9e9e;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  top: 60%;
+  right: 30%; /* Adjusted to ensure no overflow */
+  position: absolute;
+}
+
+/* Header Content */
 .header-content {
-  color: #1a237e; /* Navy Blue */
+  color: #1a237e;
   z-index: 1;
 }
 
-/* Animated Button Styling */
-.animated-button {
+.explore-button {
   display: inline-block;
   margin-top: 20px;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #ffd600;
   color: #1a237e;
-  background-color: #ffd600; /* Accent Yellow */
   border: none;
-  border-radius: 25px;
+  border-radius: 5px;
+  font-size: 1rem;
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Button Hover Effect */
-.animated-button:hover {
-  background-color: #1a237e;
-  color: #ffd600;
-  transform: scale(1.05);
+.explore-button:hover {
+  background-color: #f5f5dc;
+  transform: translateY(-5px);
 }
 
-/* Button Focus Effect */
-.animated-button:focus {
-  outline: none;
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .shape-1, .shape-2, .shape-3, .shape-4, .hexagon {
+    display: none; /* Hide shapes on smaller screens */
+  }
+
+  .explore-button {
+    font-size: 0.8rem;
+    padding: 8px 15px;
+  }
 }
 </style>
