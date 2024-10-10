@@ -6,10 +6,7 @@
     <HeaderPage id="home" />
 
     <!-- About Section (corresponds to #about in the navbar) -->
-    <section id="about" class="about-section">
-      <h2>About Me</h2>
-      <p>This is the about me section content. Add more details here.</p>
-    </section>
+    <AboutSection id="about" />
 
     <!-- Projects Section (corresponds to #projects in the navbar) -->
     <PortfolioList id="projects" />
@@ -26,18 +23,20 @@
 import NavbarPage from './components/NavbarPage.vue';
 import HeaderPage from './components/HeaderPage.vue';
 import PortfolioList from './components/PortfolioList.vue';
+import AboutSection from './components/AboutSection.vue'; // Import AboutSection
 
 export default {
   components: {
     NavbarPage,
     HeaderPage,
     PortfolioList,
+    AboutSection, // Register AboutSection
   },
 };
 </script>
 
 <style scoped>
-/* Add padding to offset the height of the fixed navbar */
+/* Style for sections */
 .about-section, .contact-section, #projects {
   padding-top: 100px; /* Adjust this value based on your navbar height */
   min-height: 100vh; /* Ensure each section takes up full viewport height */
@@ -45,13 +44,16 @@ export default {
 
 .about-section {
   background-color: #f4f4f4;
+  text-align: center;
 }
 
 .contact-section {
   background-color: #cccccc;
+  text-align: center;
 }
 
+/* Smooth scrolling */
 html {
-  scroll-behavior: smooth; /* Enables smooth scrolling */
+  scroll-behavior: smooth;
 }
 </style>
