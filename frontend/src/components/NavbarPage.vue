@@ -10,10 +10,10 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="d-flex justify-content-center">
-            <a href="#home" class="nav-link-item">Home</a>
-            <a href="#about" class="nav-link-item">About Me</a>
-            <a href="#projects" class="nav-link-item">Projects</a>
-            <a href="#contact" class="nav-link-item">Contact</a>
+          <router-link to="/#home" class="nav-link-item">Home</router-link>
+          <router-link to="/#about" class="nav-link-item">About Me</router-link>
+          <router-link to="/#projects" class="nav-link-item">Projects</router-link>
+          <router-link to="/#contact" class="nav-link-item">Contact</router-link>
           </b-navbar-nav>
         </b-collapse>
       </div>
@@ -48,8 +48,7 @@ export default {
 .navbar-title {
   font-family: 'Pacifico', cursive;
   font-size: 1.8rem;
-  font-weight: bold;
-  color: #607d8b;
+  color: #ffd600; /* Accent color for the title */
 }
 .main-navbar {
   position: fixed;
@@ -57,31 +56,48 @@ export default {
   top: 0;
   left: 0;
   z-index: 1000;
-  background-color: #1a237e !important; /* Navy Blue background */
+  background-color: #0d1330 !important; /* Navy Blue background */
   padding: 10px 20px;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Remove underlines from links and use Slate Gray for text */
+/* Apply a background color change when scrolling */
+.main-navbar.scrolled {
+  background-color: #0d1330 !important; /* Darker shade of blue when scrolled */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for navigation links */
 .nav-link-item {
   font-size: 1.1rem;
-  color: #607d8b; /* Slate Gray color for the links */
+  color: #e0e0e0; /* Light gray for link text */
   margin: 0 15px;
   padding: 8px 15px;
-  text-decoration: none; /* Remove underline */
+  text-decoration: none;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-/* Hover effect for the links */
+/* Hover effect for navigation links */
 .nav-link-item:hover {
-  color: #e2e0d6; /* Accent Yellow on hover */
-  background-color: #1a237e; /* Slight yellow tint on hover */
+  color: #ffd600; /* Accent yellow on hover */
 }
 
 /* Active link style */
 .nav-link-item.active {
-  color: #c8c6bf; /* Accent Yellow for the active link */
+  color: #ffd600; /* Accent yellow for active link */
   font-weight: bold;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .navbar-title {
+    font-size: 1.5rem;
+  }
+
+  .nav-link-item {
+    font-size: 1rem;
+    margin: 0 10px;
+  }
 }
 </style>

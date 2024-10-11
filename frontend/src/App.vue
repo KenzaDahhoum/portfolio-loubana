@@ -1,36 +1,17 @@
 <template>
   <div id="app">
     <NavbarPage />
-
-    <!-- Home Section (corresponds to #home in the navbar) -->
-    <HeaderPage id="home" />
-
-    <!-- About Section (corresponds to #about in the navbar) -->
-    <AboutSection id="about" />
-
-    <!-- Projects Section (corresponds to #projects in the navbar) -->
-    <PortfolioList id="projects" />
-
-    <!-- Contact Section (corresponds to #contact in the navbar) -->
-    <section id="contact" class="contact-section">
-      <h2>Contact</h2>
-      <p>Contact me through this section. Add a form or contact details here.</p>
-    </section>
+    <!-- Use <router-view /> to display routed components -->
+    <router-view />
   </div>
 </template>
 
 <script>
 import NavbarPage from './components/NavbarPage.vue';
-import HeaderPage from './components/HeaderPage.vue';
-import PortfolioList from './components/PortfolioList.vue';
-import AboutSection from './components/AboutSection.vue'; // Import AboutSection
 
 export default {
   components: {
     NavbarPage,
-    HeaderPage,
-    PortfolioList,
-    AboutSection, // Register AboutSection
   },
 };
 </script>

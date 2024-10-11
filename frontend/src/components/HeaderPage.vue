@@ -4,7 +4,8 @@
     <div class="header-content">
       <h1>Welcome to Kenza's Portfolio</h1>
       <p>Discover my projects, creativity, and the passion behind my work.</p>
-      <a href="#projects" class="explore-button">Explore My Work</a>
+      <router-link to="/#projects" class="explore-button">Explore My Work</router-link>
+
     </div>
     <div class="header-graphics">
       <div class="emoji">✨</div>
