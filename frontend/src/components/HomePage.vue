@@ -35,8 +35,8 @@
   <style scoped>
   /* Style for sections */
   .about-section, .contact-section, #projects {
-    padding-top: 100px; /* Adjust this value based on your navbar height */
-    min-height: 100vh; /* Ensure each section takes up full viewport height */
+    padding-top: 100px;
+    min-height: 100vh;
   }
   
   .about-section {
