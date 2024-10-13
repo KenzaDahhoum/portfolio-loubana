@@ -2,8 +2,14 @@
     <div class="section education-section">
       <h2>Education</h2>
       <ul>
-        <li v-for="education in educations" :key="education.id">
-          <strong class="institution">{{ education.institution }}</strong> - {{ education.degree }} ({{ education.start_date }} - {{ education.end_date }})
+        <li v-for="education in educations" :key="education.id" class="education-card">
+          <div class="education-details">
+            <strong class="institution">{{ education.institution }}</strong>
+            <span class="degree">{{ education.degree }}</span>
+          </div>
+          <div class="duration">
+            <i class="fas fa-calendar-alt"></i> {{ education.start_date }} - {{ education.end_date }}
+          </div>
         </li>
       </ul>
     </div>
@@ -35,34 +41,76 @@
   </script>
   
   <style scoped>
-  .education-section ul {
+  /* Education Section Styles */
+  .education-section {
+    margin-bottom: 2rem;
+  }
+  .section h2 {
+  color: #0d1330;
+  font-size: 2.2rem;
+  font-family: 'Pacifico', cursive;
+  margin-bottom: 20px;
+  text-align: center;
+}
+  
+  /* Education List Styling */
+  ul {
     list-style: none;
     padding: 0;
   }
   
-  .education-section ul li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
+  .education-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
   }
   
-  .education-section ul li strong.institution {
-    color: #ffd600; /* Matching with your yellow theme */
-    font-weight: bold;
+  .education-card:hover {
+    background-color: #f9f9f9;
   }
   
-  .education-section ul li:before {
-    content: '•';
+  /* Styling for the Education Details */
+  .education-details {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+  }
+  
+  /* Institution Name in Bold and Yellow */
+  .institution {
+    font-size: 1.2rem;
     color: #ffd600;
     font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
   }
   
-  .education-section ul li:hover {
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+  /* Degree Information */
+  .degree {
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  /* Duration Styling (Dates) */
+  .duration {
+    font-size: 1rem;
+    color: #888;
+    font-style: italic;
+  }
+  
+  /* Icon Styling */
+  .duration i {
+    margin-right: 8px;
+    color: #ffd600;
+  }
+  
+  /* Hover Effect */
+  .education-card:hover .institution {
+    color: #e0a800;
   }
   </style>
   
