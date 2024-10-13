@@ -1,11 +1,11 @@
 <template>
-    <div class="section projects-section">
+    <div class="projects-section section">
       <h2>Projects</h2>
-      <ul>
-        <li v-for="project in projects" :key="project.id">
-          <strong class="title">{{ project.title }}</strong> - {{ project.description }} ({{ project.technologies }})
-        </li>
-      </ul>
+      <div class="project-card" v-for="project in projects" :key="project.id">
+        <strong class="title">{{ project.shortTitle }}</strong>
+        <p class="description">{{ project.description }}</p>
+        <p class="technologies">Technologies used: <span>{{ project.technologies }}</span></p>
+      </div>
     </div>
   </template>
   
@@ -15,7 +15,7 @@
   export default {
     data() {
       return {
-        projects: [],
+        projects: []
       };
     },
     mounted() {
@@ -25,56 +25,70 @@
       async fetchProjects() {
         try {
           const response = await axios.get('http://127.0.0.1:5000/api/projects');
-          this.projects = response.data;
+          this.projects = response.data.map(project => {
+            return {
+              ...project,
+              shortTitle: this.getShortTitle(project.title),
+            };
+          });
         } catch (error) {
           console.error("Error fetching projects data", error);
         }
       },
-    },
+      getShortTitle(title) {
+        const titlesMap = {
+          "HRZen Management System": "HRZen System",
+          "Frontend for Real Estate Platform": "Real Estate Platform",
+          "Chichaoua Web Development Project": "Chichaoua Project",
+          "DIGISBAI Web Development": "DIGISBAI Development",
+        };
+        return titlesMap[title] || title;
+      }
+    }
   };
   </script>
   
   <style scoped>
-  .projects-section ul {
-    list-style: none;
-    padding: 0;
+  .section h2 {
+    color: #0d1330;
+    font-size: 2.2rem;
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    margin-bottom: 20px;
   }
   
-  .projects-section ul li {
-    margin-bottom: 10px;
+  .projects-section {
+    margin-bottom: 2rem;
+  }
+  
+  .project-card {
+    margin-bottom: 1.5rem;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .project-card .title {
+    font-size: 1.4rem;
+    color: #ffd600;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-card .description {
     font-size: 1.1rem;
+    margin-bottom: 0.3rem;
   }
   
-  .projects-section ul li strong.title {
-    color: #ffd600;
+  .project-card .technologies {
+    font-size: 1rem;
+    color: #888;
+  }
+  
+  .project-card .technologies span {
+    color: #0d1330;
     font-weight: bold;
   }
-  
-  .projects-section ul li:before {
-    content: '•';
-    color: #ffd600;
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-  }
-  
-  .projects-section ul li:hover {
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
-  .card {
-  background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-}
-
   </style>
   
