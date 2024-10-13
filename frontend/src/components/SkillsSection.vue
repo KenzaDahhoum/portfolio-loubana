@@ -1,16 +1,15 @@
 <template>
-    <div class="skills-section">
+    <div class="section skills-section">
       <h2>Skills</h2>
-  
-      <div class="skills-category" v-for="category in skillCategories" :key="category.name">
-        <div class="skills-category-title" @click="toggleCategory(category.name)">
-          {{ category.name }}
-          <span v-if="isOpen(category.name)">▲</span>
+      <div class="dropdown" v-for="category in skillCategories" :key="category.title">
+        <div class="dropdown-header" @click="toggleDropdown(category)">
+          {{ category.title }}
+          <span v-if="category.open">▲</span>
           <span v-else>▼</span>
         </div>
-        <ul v-if="isOpen(category.name)" class="skills-category-content">
+        <ul v-if="category.open" class="dropdown-list">
           <li v-for="skill in category.skills" :key="skill.id">
-            <strong>{{ skill.name }}</strong> - {{ skill.category }}
+            <strong>{{ skill.name }}</strong>
           </li>
         </ul>
       </div>
@@ -24,25 +23,13 @@
     data() {
       return {
         skills: [],
-        openCategories: [],
+        skillCategories: [
+          { title: "Tools and Technology", open: false, skills: [] },
+          { title: "Programming Languages", open: false, skills: [] },
+          { title: "Soft Skills", open: false, skills: [] },
+          { title: "Design Skills", open: false, skills: [] },
+        ]
       };
-    },
-    computed: {
-      skillCategories() {
-        // Group skills by category
-        const categories = {};
-        this.skills.forEach(skill => {
-          if (!categories[skill.category]) {
-            categories[skill.category] = [];
-          }
-          categories[skill.category].push(skill);
-        });
-  
-        return Object.keys(categories).map(category => ({
-          name: category,
-          skills: categories[category],
-        }));
-      },
     },
     mounted() {
       this.fetchSkills();
@@ -52,25 +39,59 @@
         try {
           const response = await axios.get('http://127.0.0.1:5000/api/skills');
           this.skills = response.data;
+          this.assignSkillsToCategories();
         } catch (error) {
-          console.error('Error fetching skills data', error);
+          console.error("Error fetching skills data", error);
         }
       },
-      toggleCategory(categoryName) {
-        if (this.isOpen(categoryName)) {
-          this.openCategories = this.openCategories.filter(cat => cat !== categoryName);
-        } else {
-          this.openCategories.push(categoryName);
-        }
+      assignSkillsToCategories() {
+        this.skillCategories.forEach(category => {
+          category.skills = this.skills.filter(skill => skill.category === category.title);
+        });
       },
-      isOpen(categoryName) {
-        return this.openCategories.includes(categoryName);
-      },
+      toggleDropdown(category) {
+        category.open = !category.open;
+      }
     },
   };
   </script>
   
   <style scoped>
-  /* Add styles here for your dropdown effect, it's included in the main page for now */
+  /* Dropdown Styling */
+  .dropdown {
+    margin-bottom: 20px;
+  }
+  
+  .dropdown-header {
+    background-color: #ffd600;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #0d1330;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dropdown-list {
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+  
+  .dropdown-list li {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .dropdown-list li:hover {
+    color: #ffd600;
+  }
+  
+  .dropdown-header:hover {
+    background-color: #ffe680;
+  }
   </style>
   
