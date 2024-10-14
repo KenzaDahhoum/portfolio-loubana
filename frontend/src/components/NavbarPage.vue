@@ -45,8 +45,9 @@ export default {
 </script>
 
 <style scoped>
+
 .navbar-title {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Pacifico', cursive !important;
   font-size: 1.8rem;
   color: #ffd600; /* Accent color for the title */
 }

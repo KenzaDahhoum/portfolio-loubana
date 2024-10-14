@@ -1,15 +1,19 @@
 <template>
   <div class="journey-page">
-    <div data-aos="fade-up">
+    <!-- Education Section -->
+    <div data-aos="fade-up" data-aos-duration="1000">
       <EducationSection />
     </div>
-    <div data-aos="fade-up">
+    <!-- Experience Section -->
+    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
       <ExperienceSection />
     </div>
-    <div data-aos="fade-up">
+    <!-- Projects Section -->
+    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
       <ProjectsSection />
     </div>
-    <div data-aos="fade-up">
+    <!-- Skills Section -->
+    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
       <SkillsSection />
     </div>
   </div>
@@ -32,44 +36,40 @@ export default {
   },
   mounted() {
     AOS.init({
-      duration: 1000, // Animation duration
-      once: true,     // Whether animation should happen only once
+      duration: 1000, // General animation duration
+      once: true, // Animation happens only once
+      easing: 'ease-in-out',
     });
   },
 };
 </script>
 
-
 <style scoped>
-/* General styles for the page */
 .journey-page {
-  padding-top: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 100px 20px;
   min-height: 100vh;
 }
 
-/* Center the titles */
-.section h2 {
-  color: #0d1330;
-  font-size: 2.2rem;
-  font-family: 'Pacifico', cursive;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-/* Card styling */
 .section {
   background-color: #f9f9f9;
   margin-bottom: 20px;
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect for cards */
+
 .section:hover {
   background-color: #eaeaea;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  color: #0d1330;
+  margin-bottom: 20px;
 }
 </style>

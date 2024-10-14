@@ -5,20 +5,13 @@
         <div class="about-text">
           <h2>About Me</h2>
           <p>
-            Hi, I'm <span class="highlight">Kenza</span>, a passionate developer and entrepreneur.
-            My journey began with a love for technology and a desire to create
-            meaningful solutions. Throughout my studies and experiences, I've
-            developed a range of skills in <span class="highlight">web development</span>,
-            <span class="highlight">software engineering</span>, and
-            <span class="highlight">project management</span>. My entrepreneurial spirit has led me
-            to start small businesses, where I apply my technical skills and
-            creativity to solve real-world problems.
+            Hi, I'm <span class="highlight">Kenza</span>, a dedicated software developer with a passion for solving complex problems through technology. My journey in tech has been fueled by a deep curiosity and a drive to create meaningful solutions that make a difference.
           </p>
           <p>
-            Whether working on a personal project, collaborating with a team, or
-            building my business, I strive to combine <span class="highlight">innovation</span> with practical
-            solutions. I’m always eager to learn, grow, and take on new challenges
-            that push my limits. Let's explore my work together!
+            Over the years, I’ve honed my skills in <span class="highlight">web development</span>, <span class="highlight">software engineering</span>, and <span class="highlight">project management</span>, working on diverse projects that push the boundaries of innovation. From launching small businesses to collaborating with teams, my entrepreneurial mindset has enabled me to turn ideas into reality.
+          </p>
+          <p>
+            I’m always exploring new challenges, eager to grow both personally and professionally. Whether it’s crafting a user-friendly web experience or building scalable applications, I strive to deliver excellence in everything I do. Ready to learn more about my journey and the exciting projects I’ve been a part of? Let's dive in!
           </p>
           <!-- Use router-link for navigation -->
           <router-link to="/my-journey" class="explore-btn">Explore More</router-link>
@@ -37,7 +30,6 @@
   </script>
   
   <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
   
   .about-section {
     padding: 60px 20px;
@@ -49,19 +41,21 @@
   .about-container {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .about-text {
     flex: 1;
-    min-width: 300px;
-    margin-right: 20px;
+    min-width: 280px;
+    margin-right: 40px;
   }
   
   .about-text h2 {
     font-family: 'Pacifico', cursive;
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     color: #0d1330;
     margin-bottom: 20px;
   }
@@ -70,6 +64,7 @@
     font-size: 1.1em;
     line-height: 1.6;
     color: #333;
+    margin-bottom: 15px;
   }
   
   .highlight {
@@ -79,17 +74,22 @@
   
   .about-image {
     flex: 1;
-    min-width: 300px;
+    min-width: 280px;
     text-align: center;
+    max-width: 400px;
   }
   
   .about-image img {
-    width: 80%;
+    width: 100%;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    max-height: 400px; /* Limit the height */
+    display: inline-block;
   }
   
-  /* Updated button style */
+  /* Button Style */
   .explore-btn {
     display: inline-block;
     margin-top: 20px;
@@ -113,9 +113,15 @@
   @media (max-width: 768px) {
     .about-container {
       flex-direction: column;
+      text-align: center;
     }
     .about-text {
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+    .about-image {
       margin: 0;
+      max-width: 300px;
     }
   }
   </style>
