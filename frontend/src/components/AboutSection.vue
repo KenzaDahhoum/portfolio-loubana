@@ -85,7 +85,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     object-fit: cover;
-    max-height: 400px; /* Limit the height */
+    max-height: 400px; 
     display: inline-block;
   }
   

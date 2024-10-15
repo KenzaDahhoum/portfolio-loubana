@@ -12,7 +12,7 @@
           <b-navbar-nav class="d-flex justify-content-center">
           <router-link to="/#home" class="nav-link-item">Home</router-link>
           <router-link to="/#about" class="nav-link-item">About Me</router-link>
-          <router-link to="/#projects" class="nav-link-item">Projects</router-link>
+          <router-link to="/#projects" class="nav-link-item">My Brand</router-link>
           <router-link to="/#contact" class="nav-link-item">Contact</router-link>
           </b-navbar-nav>
         </b-collapse>
@@ -49,7 +49,7 @@ export default {
 .navbar-title {
   font-family: 'Pacifico', cursive !important;
   font-size: 1.8rem;
-  color: #ffd600; /* Accent color for the title */
+  color: #ffd600; 
 }
 .main-navbar {
   position: fixed;
@@ -57,7 +57,7 @@ export default {
   top: 0;
   left: 0;
   z-index: 1000;
-  background-color: #0d1330 !important; /* Navy Blue background */
+  background-color: #0d1330 !important;
   padding: 10px 20px;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -65,14 +65,14 @@ export default {
 
 /* Apply a background color change when scrolling */
 .main-navbar.scrolled {
-  background-color: #0d1330 !important; /* Darker shade of blue when scrolled */
+  background-color: #0d1330 !important; 
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Styling for navigation links */
 .nav-link-item {
   font-size: 1.1rem;
-  color: #e0e0e0; /* Light gray for link text */
+  color: #e0e0e0; 
   margin: 0 15px;
   padding: 8px 15px;
   text-decoration: none;
@@ -81,12 +81,11 @@ export default {
 
 /* Hover effect for navigation links */
 .nav-link-item:hover {
-  color: #ffd600; /* Accent yellow on hover */
+  color: #ffd600;
 }
-
 /* Active link style */
 .nav-link-item.active {
-  color: #ffd600; /* Accent yellow for active link */
+  color: #ffd600; 
   font-weight: bold;
 }
 

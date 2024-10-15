@@ -1,124 +1,143 @@
 <template>
-  <div class="portfolio-list">
-    <b-container>
-      <h2 class="section-title">My Recent Projects</h2>
-      <b-row class="projects-container">
-        <b-col
-          v-for="project in projects"
-          :key="project.id"
-          cols="12"
-          md="6"
-          lg="4"
-          class="project-card"
-          data-aos="fade-up"
-          @click="viewProject(project.id)"
-        >
-          <b-card no-body class="mb-4">
-            <b-img
-              :src="project.image"
-              alt="Project Image"
-              class="project-image"
-            />
-            <b-card-body>
-              <h3 class="project-title">{{ project.title }}</h3>
-              <p class="project-description">{{ project.description }}</p>
-            </b-card-body>
-          </b-card>
-        </b-col>
-      </b-row>
-    </b-container>
-  </div>
+  <section class="loubana-section">
+    <div class="loubana-container">
+      <!-- Title and Description -->
+      <div class="loubana-text">
+        <h2>Loubana</h2>
+        <p>
+          Loubana is more than just skincare; it's a commitment to bringing natural, effective, and luxurious care to your skin. Inspired by traditional Moroccan beauty secrets and modern skincare needs, Loubana products are crafted with pure oliban extract and precious oils. From revitalizing masques to hydrating creams, every product is designed to rejuvenate your skin, promote radiance, and enhance your natural glow. Our products are not only a treat for your skin but also a promise of quality, care, and sustainability, ensuring that your skin looks and feels its best with every use.
+        </p>
+      </div>
+      
+      <!-- Product Cards -->
+      <div class="loubana-products">
+        <div class="product-card" v-for="product in products" :key="product.id">
+          <!-- Image -->
+          <div class="product-image">
+            <img :src="product.image" alt="Product Image" />
+          </div>
+          <!-- Text -->
+          <div class="product-info">
+            <h3>{{ product.title }}</h3>
+            <p>{{ product.description }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explore Button -->
+      <router-link to="/loubana" class="explore-btn">Explore Loubana</router-link>
+    </div>
+  </section>
 </template>
 
 <script>
-import "aos/dist/aos.css";
-import AOS from "aos";
-
 export default {
   data() {
     return {
-      projects: [
+      products: [
         {
           id: 1,
-          title: "Personal Portfolio",
-          description: "A web portfolio showcasing my work and journey.",
-          images: [require("@/assets/images/screenshot_2024.png")],
+          title: "Masque Oliban Miel",
+          description: "A revitalizing masque enriched with oliban and honey.",
+          image: require('@/assets/images/IMG_masque-1.jpeg'),
         },
         {
           id: 2,
-          title: "HRZen System",
-          description:
-            "An HR management system to manage employee records and events.",
-          images: [
-            require("@/assets/images/home-hrzen.png"),
-            require("@/assets/images/add-emp.42d70c6a.png"),
-            require("@/assets/images/add-event.527507b3.png"),
-            require("@/assets/images/attendance-track.1b38c6da.png"),
-            require("@/assets/images/login.d31e196e.png"),
-          ],
+          title: "Crème Oliban",
+          description: "A deeply hydrating night cream with oliban and precious oils.",
+          image: require('@/assets/images/IMG_creme-1.jpeg'),
         },
+        {
+          id: 3,
+          title: "Tabrima",
+          description: "A luxurious traditional scrub enriched with herbs for a radiant glow.",
+          image: require('@/assets/images/tabrima.jpeg'),
+        }
       ],
     };
-  },
-  mounted() {
-    AOS.init({
-      duration: 1200,
-      once: true,
-    });
-  },
-  methods: {
-    viewProject(id) {
-      this.$router.push({ name: "ProjectDetails", params: { id } });
-    },
-  },
+  }
 };
 </script>
 
 <style scoped>
-.portfolio-list {
+.loubana-section {
+  padding: 60px 20px;
+  background-color: #f4f4f4;
   text-align: center;
-  margin: 40px auto;
 }
 
-.section-title {
+.loubana-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loubana-text h2 {
+  font-family: 'Pacifico', cursive;
   font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #0d1330;
+}
+
+.loubana-text p {
+  font-size: 1.1em;
   margin-bottom: 30px;
-  font-weight: bold;
-  font-family: "Pacifico", cursive;
+  color: #333;
 }
 
-.projects-container {
+.loubana-products {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.project-card {
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.product-card {
+  flex: 1;
+  max-width: 300px;
+  margin: 15px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.project-card:hover {
+.product-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-.project-image {
+.product-image img {
   width: 100%;
   height: auto;
-  object-fit: cover;
   border-radius: 10px;
 }
 
-.project-title {
+.product-info h3 {
   font-size: 1.5rem;
   margin: 15px 0 10px;
-  font-weight: 600;
+  font-weight: bold;
   color: #ffd600;
 }
 
-.project-description {
-  color: #666;
+.product-info p {
   font-size: 1rem;
+  color: #666;
+}
+
+.explore-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #ffd600;
+  color: #1a237e;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #f5f5dc;
+  transform: translateY(-5px);
 }
 </style>

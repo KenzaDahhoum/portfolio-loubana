@@ -3,18 +3,15 @@
     <div class="header-overlay"></div>
     <div class="header-content">
       <h1>Welcome to Kenza's Portfolio</h1>
-      <p>Discover my projects, creativity, and the passion behind my work.</p>
+      <p>Explore my journey in tech, creativity, and entrepreneurship. From web development to building my skincare brand, it's all here!</p>
       <router-link to="/#projects" class="explore-button">Explore My Work</router-link>
-
     </div>
     <div class="header-graphics">
-      <div class="emoji">✨</div>
-      <div class="emoji">🚀</div>
-      <div class="emoji">💻</div>
       <div class="emoji">🌟</div>
     </div>
   </header>
 </template>
+
 
 <script>
 import AOS from 'aos';
