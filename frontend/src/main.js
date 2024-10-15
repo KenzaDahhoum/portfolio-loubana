@@ -33,4 +33,8 @@ app.use(router);
 
 // Initialize AOS
 app.mount('#app');
-AOS.init();
+AOS.init({
+    duration: 1200,
+    easing: 'ease-out-cubic',
+    once: true,
+});

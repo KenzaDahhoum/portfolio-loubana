@@ -67,7 +67,7 @@ with app.app_context():
         position="Web Developer",
         start_date="February 2020",
         end_date="July 2020",
-        location="Morocco",
+        location="Chichaoua",
         description="Internship focusing on web development."
     )
     # Adding call center experiences
