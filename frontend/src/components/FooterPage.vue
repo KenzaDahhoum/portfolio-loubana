@@ -3,9 +3,9 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="social-icons">
-          <a href="https://instagram.com/oliban_loubana" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/KenzaDahhoum" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://x.com/KDahhoum" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/dahhoum-kenza/" target="_blank"><i class="fab fa-linkedin"></i></a>
         </div>
         <p>© 2024 Kenza's Portfolio. All Rights Reserved.</p>
       </div>
