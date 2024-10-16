@@ -38,7 +38,7 @@
     methods: {
       async fetchSkills() {
         try {
-          const response = await axios.get('http://127.0.0.1:5000/api/skills');
+          const response = await axios.get('https://kenzas-portfolio.onrender.com/api/skills');
           this.skills = response.data;
           this.assignSkillsToCategories();
         } catch (error) {

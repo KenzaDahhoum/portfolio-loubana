@@ -36,7 +36,7 @@ export default {
   },
   created() {
     axios
-      .get('http://localhost:5000/api/loubana/creme')
+      .get('https://kenzas-portfolio.onrender.com/api/loubana/creme')
       .then((response) => {
         this.product = response.data;
       })

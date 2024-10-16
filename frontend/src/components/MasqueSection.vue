@@ -35,7 +35,7 @@
       };
     },
     created() {
-      axios.get('http://localhost:5000/api/loubana/masque')
+      axios.get('https://kenzas-portfolio.onrender.com/api/loubana/masque')
         .then(response => {
           this.product = response.data;
         })

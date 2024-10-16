@@ -36,7 +36,7 @@
     methods: {
       async fetchEducation() {
         try {
-          const response = await axios.get('http://127.0.0.1:5000/api/education');
+          const response = await axios.get('https://kenzas-portfolio.onrender.com/api/education');
           this.educations = response.data;
         } catch (error) {
           console.error("Error fetching education data", error);

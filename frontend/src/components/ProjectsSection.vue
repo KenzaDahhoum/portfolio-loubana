@@ -36,7 +36,7 @@ export default {
   methods: {
     async fetchProjects() {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/api/projects');
+        const response = await axios.get('https://kenzas-portfolio.onrender.com/api/projects');
         this.projects = response.data.map(project => {
           return {
             ...project,

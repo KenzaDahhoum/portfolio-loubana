@@ -70,7 +70,7 @@ export default {
   methods: {
     async fetchExperience() {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/api/experience');
+        const response = await axios.get('https://kenzas-portfolio.onrender.com/api/experience');
         this.experiences = response.data;
       } catch (error) {
         console.error('Error fetching experience data', error);

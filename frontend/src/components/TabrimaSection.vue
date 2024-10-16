@@ -35,7 +35,7 @@
       };
     },
     created() {
-      axios.get('http://localhost:5000/api/loubana/tabrima')
+      axios.get('https://kenzas-portfolio.onrender.com/api/loubana/tabrima')
         .then(response => {
           this.product = response.data;
         })
