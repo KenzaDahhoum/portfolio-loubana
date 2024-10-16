@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from models import db, Education, Experience, Project, Skill
+from models import db, Education, Experience, Project, Skill, Product, Ingredient, ProductImage
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portfolio.db'
@@ -10,6 +10,141 @@ db.init_app(app)
 
 with app.app_context():
     db.create_all()
+
+    # Pre-populate products in the database
+    db.session.query(Product).delete()
+    db.session.query(Ingredient).delete()
+
+    # Masque Oliban Miel
+    masque = Product(
+        title="Masque Oliban Miel",
+        description="A revitalizing masque enriched with oliban and honey.",
+        benefits="Hydrates, revitalizes, reduces acne scars, firms the skin.",
+        how_to_use="Apply 2-3 times a week on clean skin. Leave for 15 minutes, then rinse thoroughly.",
+        whatsapp_link="https://wa.me/1234567890",
+        instagram_link="https://www.instagram.com/oliban_loubana/"
+    )
+
+    ingredients_masque = [
+        Ingredient(name="Oliban extract", benefits="Antibacterial, anti-inflammatory, firms the skin", product=masque),
+        Ingredient(name="Honey", benefits="Moisturizing, antibacterial, antioxidant", product=masque),
+        Ingredient(name="Jojoba Oil", benefits="Deep hydration, balances oil production", product=masque),
+        Ingredient(name="Sweet Almond Oil", benefits="Softens skin, reduces irritation", product=masque),
+        Ingredient(name="Rose Oil", benefits="Soothes and rejuvenates skin", product=masque),
+        Ingredient(name="Vitamin E", benefits="Protects skin, prevents aging", product=masque)
+    ]
+
+    masque_images = [
+        ProductImage(image_url="/assets/images/masque-1.jpg", product=masque),
+        ProductImage(image_url="/assets/images/masque-2.jpg", product=masque),
+        ProductImage(image_url="/assets/images/masque-3.jpg", product=masque)
+    ]
+    
+    # Crème Oliban
+    creme = Product(
+        title="Crème Oliban",
+        description="A deeply hydrating night cream with oliban and precious oils.",
+        benefits="Deep hydration, reduces wrinkles, brightens complexion.",
+        how_to_use="Apply daily as a night cream to deeply moisturize your skin.",
+        whatsapp_link="https://wa.me/1234567890",
+        instagram_link="https://www.instagram.com/oliban_loubana/"
+    )
+
+    ingredients_creme = [
+        Ingredient(name="Oliban extract", benefits="Antibacterial, anti-inflammatory", product=creme),
+        Ingredient(name="Prickly Pear Oil", benefits="Rich in antioxidants, reduces wrinkles", product=creme),
+        Ingredient(name="Jojoba Oil", benefits="Deep hydration", product=creme),
+        Ingredient(name="Sweet Almond Oil", benefits="Softens skin", product=creme),
+        Ingredient(name="Rose Water", benefits="Soothes and refreshes skin", product=creme),
+        Ingredient(name="Vitamin E", benefits="Prevents aging", product=creme)
+    ]
+
+    creme_images = [
+        ProductImage(image_url="/assets/images/creme-1.jpg", product=creme),
+        ProductImage(image_url="/assets/images/creme-2.jpg", product=creme),
+        ProductImage(image_url="/assets/images/creme-3.jpg", product=creme)
+    ]
+
+    # Tabrima
+    tabrima = Product(
+        title="Tabrima",
+        description="A brightening oliban-based treatment to enhance skin radiance.",
+        benefits="Unifies skin tone, smooths, and brightens.",
+        how_to_use="Apply during your hammam ritual to exfoliate and rejuvenate the skin.",
+        whatsapp_link="https://wa.me/1234567890",
+        instagram_link="https://www.instagram.com/oliban_loubana/"
+    )
+
+    ingredients_tabrima = [
+        Ingredient(name="Basil", benefits="Antibacterial, reduces acne", product=tabrima),
+        Ingredient(name="Rose", benefits="Tones and softens skin", product=tabrima),
+        Ingredient(name="Lavender", benefits="Calms and soothes skin", product=tabrima),
+        Ingredient(name="Clove", benefits="Fights bacteria and acne", product=tabrima),
+        Ingredient(name="Nila", benefits="Brightens skin", product=tabrima),
+        Ingredient(name="Aker el Fassi", benefits="Brightens and evens skin tone", product=tabrima)
+    ]
+
+    tabrima_images = [
+        ProductImage(image_url="/assets/images/tabrima-1.jpg", product=tabrima),
+        ProductImage(image_url="/assets/images/tabrima-2.jpg", product=tabrima),
+        ProductImage(image_url="/assets/images/tabrima-3.jpg", product=tabrima)
+    ]
+
+    db.session.add_all([masque, creme, tabrima])
+    db.session.add_all(ingredients_masque + ingredients_creme + ingredients_tabrima)
+    db.session.add_all(masque_images + creme_images + tabrima_images)
+    db.session.commit()
+
+# Endpoints for each product type
+@app.route('/api/loubana/masque', methods=['GET'])
+def get_masque():
+    masque = Product.query.filter_by(title='Masque Oliban Miel').first()
+    if masque:
+        return jsonify({
+            'title': masque.title,
+            'description': masque.description,
+            'benefits': masque.benefits,
+            'how_to_use': masque.how_to_use,
+            'whatsapp_link': masque.whatsapp_link,
+            'instagram_link': masque.instagram_link,
+            'ingredients': [{'name': i.name, 'benefits': i.benefits} for i in masque.ingredients],
+            'images': ['/assets/images/IMG_masque-1.jpeg', '/assets/images/IMG_masque-2.jpeg', '/assets/images/IMG_masque-3.jpeg']
+        })
+    return jsonify({'message': 'Masque not found'}), 404
+
+@app.route('/api/loubana/creme', methods=['GET'])
+def get_creme():
+    creme = Product.query.filter_by(title='Crème Oliban').first()
+    if creme:
+        return jsonify({
+            'title': creme.title,
+            'description': creme.description,
+            'benefits': creme.benefits,
+            'how_to_use': creme.how_to_use,
+            'whatsapp_link': creme.whatsapp_link,
+            'instagram_link': creme.instagram_link,
+            'ingredients': [{'name': i.name, 'benefits': i.benefits} for i in creme.ingredients],
+            'images': ['/assets/images/IMG_creme-1.jpeg', '/assets/images/IMG_creme-2.jpeg', '/assets/images/IMG_creme-3.jpeg']
+        })
+    return jsonify({'message': 'Crème not found'}), 404
+
+@app.route('/api/loubana/tabrima', methods=['GET'])
+def get_tabrima():
+    tabrima = Product.query.filter_by(title='Tabrima').first()
+    if tabrima:
+        return jsonify({
+            'title': tabrima.title,
+            'description': tabrima.description,
+            'benefits': tabrima.benefits,
+            'how_to_use': tabrima.how_to_use,
+            'whatsapp_link': tabrima.whatsapp_link,
+            'instagram_link': tabrima.instagram_link,
+            'ingredients': [{'name': i.name, 'benefits': i.benefits} for i in tabrima.ingredients],
+            'images': ['/assets/images/tabrima.jpeg', '/assets/images/tabrima.jpeg', '/assets/images/tabrima.jpeg']
+        })
+    return jsonify({'message': 'Tabrima not found'}), 404
+
+
 
 # Pre-populating education, experience, skills, and projects
 
