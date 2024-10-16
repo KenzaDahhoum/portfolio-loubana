@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../components/HomePage.vue';
 import JourneyPage from '../components/JourneyPage.vue';
-
+import LoubanaPage from '@/components/LoubanaPage.vue';
 const routes = [
   { path: '/', component: HomePage },
-  { path: '/my-journey', component: JourneyPage }
+  { path: '/my-journey', component: JourneyPage },
+  { path: '/loubana' , component: LoubanaPage}
 ];
 
 const router = createRouter({
