@@ -86,15 +86,15 @@ body, html {
 .explore-button {
   display: inline-block;
   margin-top: 20px;
-  padding: 12px 24px;
+  padding: 10px 20px;
   background-color: #ffd600;
   color: #1a237e;
+  font-weight: bold;
   border: none;
   border-radius: 25px;
-  font-size: 1.2rem;
+  cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .explore-button:hover {

@@ -125,15 +125,17 @@ export default {
 }
 
 .explore-btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 10px 20px;
-  background-color: #ffd600;
-  color: #1a237e;
-  font-weight: bold;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 20px;
+    background-color: #ffd600;
+    color: #1a237e;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .explore-btn:hover {

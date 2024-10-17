@@ -42,7 +42,7 @@ color: white;
 
 /* About Section */
 .about-section {
-background-color: #d4dce3; 
+background-color: #f6f9fb; 
 padding-top: 100px;
 min-height: 100vh;
 text-align: center;
