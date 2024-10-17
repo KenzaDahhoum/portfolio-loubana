@@ -108,11 +108,12 @@ ul {
 @media (max-width: 768px) {
   .image-container {
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
   }
   
   .image-container img {
-    width: 100%;
+    width: 100%; 
   }
 }
+
 </style>
