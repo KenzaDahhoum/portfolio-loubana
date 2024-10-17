@@ -2,35 +2,88 @@
   <section id="contact" class="contact-section">
     <h2>Contact</h2>
     <p class="friendly-paragraph">
-      I'm excited to connect! Whether you have a question, a business opportunity, or just want to say hi, feel free to reach out. Let's build something amazing together!
+      I'm excited to connect! Whether you have a question, a business
+      opportunity, or just want to say hi, feel free to reach out. Let's build
+      something amazing together!
     </p>
     <div class="contact-container">
       <!-- Left Side: Contact Info -->
       <div class="contact-info">
         <ul>
-          <li><i class="fa fa-envelope"></i> Email: <strong>kenza.dahhoum@gmail.com</strong></li>
-          <li><i class="fa fa-phone"></i> Phone: <strong>+212 6.00.00.00</strong></li>
-          <li><i class="fa fa-map-marker"></i> Address: <strong>Bir Rami Sud Knitra, Morocco</strong></li>
+          <li>
+            <i class="fa fa-envelope"></i> Email:
+            <strong>kenza.dahhoum@gmail.com</strong>
+          </li>
+          <li>
+            <i class="fa fa-phone"></i> Phone: <strong>+212 6.00.00.00</strong>
+          </li>
+          <li>
+            <i class="fa fa-map-marker"></i> Address:
+            <strong>Bir Rami Sud Knitra, Morocco</strong>
+          </li>
         </ul>
       </div>
 
       <!-- Right Side: Contact Form -->
       <div class="contact-form">
         <h3>Get in Touch</h3>
-        <form>
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-        </form>
+        <form @submit="sendEmail">
+            <input v-model="form.name" name="from_name" type="text" placeholder="Your Name" required />
+            <input v-model="form.email" name="reply_to" type="email" placeholder="Your Email" required />
+            <textarea v-model="form.message" name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form> 
+
+
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
+
 export default {
   name: "ContactSection",
+  data() {
+    return {
+      form: {
+        name: "",
+        email: "",
+        message: "",
+      },
+    };
+  },
+  methods: {
+    sendEmail(e) {
+      e.preventDefault();
+      emailjs
+        .sendForm(
+          "service_mmf4oad",
+          "template_jhggtge",
+          e.target,
+          "0Cg-CfkBA6Hnhup6u"
+        )
+        .then(() => {
+          Swal.fire(
+            "Success!",
+            "Your message has been sent successfully!",
+            "success"
+          );
+          this.form.name = "";
+          this.form.email = "";
+          this.form.message = "";
+        })
+        .catch(() => {
+          Swal.fire(
+            "Error",
+            "Something went wrong. Please try again later.",
+            "error"
+          );
+        });
+    },
+  },
 };
 </script>
 
@@ -45,7 +98,7 @@ export default {
 .contact-section h2 {
   color: #0d1330;
   font-size: 2.2rem;
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -56,7 +109,7 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 30px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
 .friendly-paragraph {
@@ -66,8 +119,8 @@ export default {
 }
 
 .contact-info {
-  width: 100%; 
-  margin-bottom: 20px; 
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .contact-info ul {
@@ -93,11 +146,11 @@ export default {
   padding: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  width: 100%; 
+  width: 100%;
 }
 
 .contact-form h3 {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   font-size: 1.8rem;
   margin-bottom: 20px;
   color: #1a237e;
@@ -129,11 +182,11 @@ export default {
 /* Media query for larger screens */
 @media (min-width: 768px) {
   .contact-info {
-    width: 40%; 
+    width: 40%;
   }
 
   .contact-form {
-    width: 50%; 
+    width: 50%;
   }
 }
 </style>
