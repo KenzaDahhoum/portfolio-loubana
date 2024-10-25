@@ -19,7 +19,7 @@
   
         <!-- Right Column: Image -->
         <div class="about-image">
-          <img src="../assets/images/kenza_cv-removebg-preview (1).png" alt="Kenza's Photo" />
+          <img src="../assets/images/about-image.png" alt="Kenza's Photo" />
         </div>
       </div>
     </section>
